@@ -7,7 +7,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 export async function fetchSections() {
   const { data, error } = await supabase
     .from('qrmenu')
-    .select('section_name, section_content, position, bg_image')
+    .select('section_name, section_content, position, bg_image, bg_color')
     .order('position', { ascending: true });
 
   if (error) {

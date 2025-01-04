@@ -26,6 +26,7 @@
         const sectionElement = document.createElement('section');
         sectionElement.className = 'snap-section';
         sectionElement.style.backgroundImage = `url(${section.bg_image})`;
+        sectionElement.style.backgroundColor = section.bg_color;
         sectionElement.innerHTML = `
           <h2>${section.section_name}</h2>
           <p>${section.section_content}</p>
