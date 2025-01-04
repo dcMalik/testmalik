@@ -21,6 +21,8 @@ async function loadSections() {
     // Render content based on section name
     if (section.section_name.toLowerCase() === 'booking') {
       sectionElement.innerHTML = renderBookingSection(section);
+    } else if (section.section_name.toLowerCase() === 'home') {
+      sectionElement.innerHTML = renderHomeSection(section, sections);
     } else {
       sectionElement.innerHTML = `
         <h2>${section.section_name}</h2>
@@ -41,6 +43,21 @@ function renderBookingSection(section) {
       <input type="date" id="booking-date" name="booking-date">
       <button type="submit">Book Now</button>
     </form>
+  `;
+}
+
+function renderHomeSection(section, sections) {
+  const links = sections
+    .filter(sec => sec.section_name.toLowerCase() !== 'home')
+    .map(sec => `<a href="#${sec.section_name.toLowerCase()}">${sec.section_name}</a>`)
+    .join('');
+
+  return `
+    <h2>${section.section_name}</h2>
+    <p>${section.section_content}</p>
+    <div class="home-links">
+      ${links}
+    </div>
   `;
 }
 
