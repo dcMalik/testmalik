@@ -10,36 +10,8 @@
   <div class="snap-container" id="snap-container">
     <!-- Sections will be dynamically inserted here -->
   </div>
-  <script type="module">
-    import { fetchSections } from './fetchData.js';
-
-    async function loadSections() {
-      const sections = await fetchSections();
-      const container = document.getElementById('snap-container');
-
-      if (sections.length === 0) {
-        container.innerHTML = '<p>No sections available.</p>';
-        return;
-      }
-
-      sections.forEach(section => {
-        const sectionElement = document.createElement('section');
-        sectionElement.className = 'snap-section';
-        if (section.bg_image) {
-          sectionElement.style.backgroundImage = `url(${section.bg_image})`;
-        } else {
-          sectionElement.style.backgroundColor = section.bg_color;
-        }
-        sectionElement.innerHTML = `
-          <h2>${section.section_name}</h2>
-          <p>${section.section_content}</p>
-        `;
-        container.appendChild(sectionElement);
-      });
-    }
-
-    loadSections();
-  </script>
+  <button id="toggle-scroll" class="floating-button">Toggle Scroll</button>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>
 
