@@ -12,6 +12,8 @@ async function loadSections() {
   sections.forEach(section => {
     const sectionElement = document.createElement('section');
     sectionElement.className = 'snap-section';
+    sectionElement.id = section.section_name.toLowerCase(); // Add unique ID to each section
+
     if (section.bg_image) {
       sectionElement.style.backgroundImage = `url(${section.bg_image})`;
     } else {
