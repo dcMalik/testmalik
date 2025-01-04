@@ -7,7 +7,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 export async function fetchSections() {
   const { data, error } = await supabase
     .from('qrmenu')
-    .select('section_name, section_content');
+    .select('section_name, section_content, position')
+    .order('position', { ascending: true });
 
   if (error) {
     console.error('Error fetching data:', error);
