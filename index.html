@@ -7,58 +7,28 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="snap-container">
-    <!-- Hero Section -->
-    <section class="snap-section hero">
-      <h1>Welcome to Gourmet Bliss</h1>
-      <p>Where taste meets perfection.</p>
-      <img src="https://source.unsplash.com/random/800x600?restaurant" alt="Restaurant Hero Image">
-    </section>
-
-    <!-- Calendar Section -->
-    <section class="snap-section calendar">
-      <h2>Book a Table</h2>
-      <p>Reserve your spot and enjoy an unforgettable experience.</p>
-      <input type="date" id="booking-date">
-      <button>Book Now</button>
-    </section>
-
-    <!-- Menu Links Section -->
-    <section class="snap-section menu-links">
-      <h2>Explore Our Menu</h2>
-      <div class="links">
-        <a href="#drinks">Drinks</a>
-        <a href="#starters">Starters</a>
-        <a href="#mains">Mains</a>
-        <a href="#desserts">Desserts</a>
-      </div>
-    </section>
-
-    <!-- Best Seller Dish #1 -->
-    <section class="snap-section dish">
-      <h2>Best Seller: Truffle Pasta</h2>
-      <p>Rich and creamy pasta infused with fresh truffles.</p>
-      <img src="dish1.jpg" alt="Truffle Pasta">
-    </section>
-
-    <!-- Best Seller Dish #2 -->
-    <section class="snap-section dish">
-      <h2>Best Seller: Chocolate Lava Cake</h2>
-      <p>Warm molten chocolate in every bite.</p>
-      <img src="dish2.jpg" alt="Chocolate Lava Cake">
-    </section>
-
-    <!-- Footer Section -->
-    <section class="snap-section footer">
-      <h2>Stay Connected</h2>
-      <p>Follow us on social media and join our community.</p>
-      <div class="footer-links">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Privacy Policy</a>
-      </div>
-    </section>
+  <div class="snap-container" id="snap-container">
+    <!-- Sections will be dynamically inserted here -->
   </div>
+  <script type="module">
+    import { fetchSections } from './fetchData.js';
+
+    async function loadSections() {
+      const sections = await fetchSections();
+      const container = document.getElementById('snap-container');
+
+      sections.forEach(section => {
+        const sectionElement = document.createElement('section');
+        sectionElement.className = 'snap-section';
+        sectionElement.innerHTML = `
+          <h2>${section.section_name}</h2>
+          <p>${section.section_content}</p>
+        `;
+        container.appendChild(sectionElement);
+      });
+    }
+
+    loadSections();
+  </script>
 </body>
 </html>
