@@ -27,6 +27,7 @@ body, html {
   align-items: center;
   text-align: center;
   padding: 2rem;
+  background: url('https://source.unsplash.com/random/800x600?food') no-repeat center center / cover;
 }
 
 /* Hero Section */
