@@ -17,12 +17,31 @@ async function loadSections() {
     } else {
       sectionElement.style.backgroundColor = section.bg_color;
     }
-    sectionElement.innerHTML = `
-      <h2>${section.section_name}</h2>
-      <p>${section.section_content}</p>
-    `;
+
+    // Render content based on section name
+    if (section.section_name.toLowerCase() === 'booking') {
+      sectionElement.innerHTML = renderBookingSection(section);
+    } else {
+      sectionElement.innerHTML = `
+        <h2>${section.section_name}</h2>
+        <p>${section.section_content}</p>
+      `;
+    }
+
     container.appendChild(sectionElement);
   });
+}
+
+function renderBookingSection(section) {
+  return `
+    <h2>${section.section_name}</h2>
+    <p>${section.section_content}</p>
+    <form>
+      <label for="booking-date">Select a date:</label>
+      <input type="date" id="booking-date" name="booking-date">
+      <button type="submit">Book Now</button>
+    </form>
+  `;
 }
 
 loadSections();
